@@ -1,7 +1,7 @@
 # sanctl
 Sanitizer controlling library
 
-# Way to build lsanctl library(liblsan.so)
+# Way to build lsanctl library(liblsanctl.so)
 ```
 $ g++ -c -fPIC src/lsanctl.cpp -o lsanctl.o
 $ g++ lsanctl.o -shared -o liblsanctl.so -lpthread
