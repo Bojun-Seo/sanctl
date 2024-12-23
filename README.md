@@ -5,7 +5,9 @@ The goal of this project is to provide various libraries to control sanitizers.
 
 # Prerequisites for build this project
 On ubuntu 24.04
+```
 $ sudo apt install build-essential
+```
 
 # Way to build the project
 ```
