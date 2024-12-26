@@ -3,10 +3,10 @@ Sanitizer controlling library.
 This library currently supports only the `lsanctl` library, which is used to manage `LSan`.
 The goal of this project is to provide various libraries to control sanitizers.
 
-# Prerequisites for build this project
+# Prerequisites for this project
 On ubuntu 24.04
 ```
-$ sudo apt install build-essential
+$ sudo apt install build-essential patchelf
 ```
 
 # Way to build the project
@@ -20,7 +20,6 @@ $ sudo make install # optional
 
 # Way to run the sample and the results
 ```
-$ patchelf --add-needed liblsan.so.0 out/samples/infinite_loop
 $ patchelf --add-needed liblsanctl.so out/samples/infinite_loop
 $ ./out/samples/infinite_loop
 
