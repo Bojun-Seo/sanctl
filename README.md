@@ -6,13 +6,13 @@ The goal of this project is to provide various libraries to control sanitizers.
 # Prerequisites for this project
 On ubuntu 24.04
 ```
-$ sudo apt install build-essential patchelf
+$ sudo apt install build-essential git cmake patchelf
 ```
 
 # Way to build the project
 ```
-$ mkdir build
-$ cd build
+$ git clone https://github.com/Bojun-Seo/sanctl.git; cd sanctl
+$ mkdir build; cd build
 $ cmake ..
 $ make
 $ sudo make install # optional
