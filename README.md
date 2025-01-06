@@ -4,9 +4,9 @@ This library currently supports only the `lsanctl` library, which is used to man
 The goal of this project is to provide various libraries to control sanitizers.
 
 # Prerequisites for this project
-On ubuntu 24.04
+On ubuntu 24.04 and 22.04
 ```
-$ sudo apt install build-essential git cmake patchelf
+$ sudo apt install build-essential git cmake
 ```
 
 # Way to build the project
@@ -20,8 +20,7 @@ $ sudo make install # optional
 
 # Way to run the sample and the results
 ```
-$ patchelf --add-needed liblsanctl.so out/samples/infinite_loop
-$ ./out/samples/infinite_loop
+$ LD_PRELOAD=liblsanctl.so out/samples/infinite_loop
 
 =================================================================
 ==470904==ERROR: LeakSanitizer: detected memory leaks
