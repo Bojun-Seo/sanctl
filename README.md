@@ -6,7 +6,7 @@ The goal of this project is to provide various libraries to control sanitizers.
 # Prerequisites for this project
 On ubuntu 24.04 and 22.04
 ```
-$ sudo apt install build-essential git cmake
+$ sudo apt install build-essential git cmake patchelf
 ```
 
 # Way to build the project
@@ -18,7 +18,35 @@ $ make
 $ sudo make install # optional
 ```
 
-# Way to run the sample and the results
+# Usages
+Following guide assumes that `liblsanctl.so` is installed on the system. In other words, you have already run `sudo make install` command.
+Therefore, please use `/path/to/liblsanctl.so` instead of `liblsanctl.so` in the following guide if the library is not installed on the system.
+
+## Option #1
+1. Build your program with `-fsanitize=leak` option enabled
+2. Run your program with `LD_PRELOAD=liblsanctl.so`
+```
+$ g++ -fsanitize=leak samples/infinite_leak_gen.cpp -o infinite_loop
+$ LD_PRELOAD=liblsanctl.so ./infinite_loop
+```
+
+## Option #2
+1. Don't need to rebuild your target
+2. Run your program with `LD_PRELOAD="liblsan.so.0:liblsanctl.so"`
+```
+$ LD_PRELOAD="liblsan.so.0:liblsanctl.so" ./a.out
+```
+
+## Option #3
+1. Don't need to rebuild and don't need to use `LD_PRELOAD` environment variable
+2. Add dependences to your target program and just run it.
+```
+$ patchelf --add-needed liblsanctl.so a.out
+$ patchelf --add-needed liblsan.so.0 a.out
+$ ./a.out
+```
+
+# Example results
 ```
 $ LD_PRELOAD=liblsanctl.so out/samples/infinite_loop
 
